@@ -16,7 +16,7 @@ namespace ServiceCenter.Domain.Viewmodel.Order
         [Display(Name = "Абонент")]
         public uint Abonent_ID { get; set; }
 
-        [Display(Name = "Ответственный")]
+        [Display(Name = "Сотрудник")]
         public uint Employee_ID { get; set; }
 
         [Display(Name = "Материалы")]

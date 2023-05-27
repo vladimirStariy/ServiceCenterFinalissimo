@@ -12,6 +12,7 @@ namespace ServiceCenter.Domain.Viewmodel.Employee
         [Display(Name = "Телефон")]
         public string Phone { get; set; }
 
+        [Display(Name = "Роль")]
         public uint? User_ID { get; set; }
     }
 }

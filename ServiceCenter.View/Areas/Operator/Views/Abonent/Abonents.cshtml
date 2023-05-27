@@ -1,14 +1,23 @@
 ﻿@model IEnumerable<ServiceCenter.Domain.Viewmodel.Abonent.AbonentListViewModel>
 
-<h1 class="h3 mb-2 text-gray-800">Абоненты</h1>
+<div class="row justify-content-start">
+    <div class="col-2">
+      <h1 class="h3 mb-2 text-gray-800">Абоненты</h1>
+    </div>
+    <div class="col-2">
+      <p><a class="btn btn-success" asp-controller="Abonent" asp-action="AbonentAdd">Добавить</a></p>
+    </div>
+  </div>
+
+
 
 <div class="my-2"></div>
 
 <div class="card shadow mb-4">
     <div class="card-body">
-<p>
+@*<p>
     <a class="btn btn-success" asp-controller="Abonent" asp-action="AbonentAdd">Добавить</a>
-</p>
+</p>*@
 <table class="table" id="minedatatable">
     <thead>
         <tr>
@@ -51,7 +60,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Tariff)
                     </td>
-                    <td>
+                    <td width="15%" align="center">
                         <a asp-action="UpdateAbonent" asp-controller="Abonent" asp-route-id="@item.Abonent_ID"
                            class="btn btn-primary btn-icon-split">
                             <span class="icon text-white-50">

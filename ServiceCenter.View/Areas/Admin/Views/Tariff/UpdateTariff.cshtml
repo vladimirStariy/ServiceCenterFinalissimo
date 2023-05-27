@@ -1,6 +1,6 @@
 ﻿@model ServiceCenter.Domain.Entity.Tariff
 
-<h4>Tariff</h4>
+<h4>Тарифный план</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -27,14 +27,14 @@
                 <span asp-validation-for="TariffType" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Tariffs" asp-controller="Tariff">Вернуться</a>
 </div>
 
 @section Scripts {

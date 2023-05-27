@@ -15,7 +15,7 @@ namespace ServiceCenter.Domain.Viewmodel.Order
         public DateTime? Order_close_date { get; set; }
         [Display(Name = "Абонент")]
         public uint Abonent_ID { get; set; }
-        [Display(Name = "Ответственный")]
+        [Display(Name = "Сотрудник")]
         public uint Employee_ID { get; set; }
 
         public ICollection<OrderService> Services { get; set; }

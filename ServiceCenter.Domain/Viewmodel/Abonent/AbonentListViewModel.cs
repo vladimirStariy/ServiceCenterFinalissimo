@@ -23,7 +23,7 @@ namespace ServiceCenter.Domain.Viewmodel.Abonent
         public string Adress { get; set; }
         [Display(Name = "Номер паспорта")]
         public string Passport { get; set; }
-        [Display(Name = "Тариф")]
+        [Display(Name = "Тарифный план")]
         public string Tariff { get; set; }
     }
 }

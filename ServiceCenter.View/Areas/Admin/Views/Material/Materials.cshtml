@@ -1,18 +1,25 @@
 ﻿@model IEnumerable<ServiceCenter.Domain.Viewmodel.MaterialV.MaterialListViewModel>
 
-<h1 class="h3 mb-2 text-gray-800">Материалы</h1>
+<div class="row justify-content-start">
+    <div class="col-2">
+      <h1 class="h3 mb-2 text-gray-800">Материалы</h1>
+    </div>
+    <div class="col-2">
+      <p><a class="btn btn-success" asp-controller="Material" asp-action="CreateMaterial">Добавить</a></p>
+    </div>
+  </div>
 
 <div class="my-2"></div>
 
 <div class="card shadow mb-4">
     <div class="card-body">
-        <div class="row align-content-lg-stretch">
+        @*<div class="row align-content-lg-stretch">
             <div class="col justify-content-center">
                 <p>
                     <a class="btn btn-success" asp-controller="Material" asp-action="CreateMaterial">Добавить</a>
                 </p>
             </div>
-        </div>
+        </div>*@
 
        
 <table class="table" id="minedatatable">
@@ -45,7 +52,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Price)
                     </td>
-                    <td>
+                    <td width="15%" align="center">
                         <a asp-action="UpdateMaterial" asp-controller="Material" asp-route-id="@item.Material_ID" 
                            class="btn btn-primary btn-icon-split">
                             <span class="icon text-white-50">

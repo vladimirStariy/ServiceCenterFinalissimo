@@ -18,7 +18,7 @@ namespace ServiceCenter.Domain.Viewmodel.Abonent
         [Display(Name = "Номер паспорта")]
         public string Passport { get; set; }
 
-        [Display(Name = "Тариф")]
+        [Display(Name = "Тарифный план")]
         public uint Tariff_ID { get; set; }
     }
 }

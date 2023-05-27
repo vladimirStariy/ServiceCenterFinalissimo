@@ -4,7 +4,7 @@ namespace ServiceCenter.Domain.Viewmodel.User
 {
     public class AccountViewModel
     {
-        [Display(Name = "name")]
+        [Display(Name = "Наименование")]
         public string Employee_name { get; set; }
     }
 }
