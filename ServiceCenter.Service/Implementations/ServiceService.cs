@@ -154,6 +154,7 @@ namespace ServiceCenter.Service.Implementations
                     model.OrderService_ID = item.OrderService_ID;
                     model.Name = item.Name;
                     model.Price = item.Price;
+                    model.Description = item.Description;
                     serviceView.Add(model);
                 }
                 if (!serviceView.Any())

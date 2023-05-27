@@ -121,6 +121,7 @@ namespace ServiceCenter.Service.Implementations
                     model.Id = (int)item.Tariff_ID;
                     model.Name = item.Name;
                     model.Price = item.Price;
+                    model.Description = item.Description;
                     model.TariffType = _tariffTypeRepository.Get().Where(x => x.TariffType_ID == item.TariffType_ID).Select(x => x.Name).FirstOrDefault().ToString();
                     tariffView.Add(model);
                 }

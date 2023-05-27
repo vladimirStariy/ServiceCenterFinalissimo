@@ -16,5 +16,7 @@ namespace ServiceCenter.Domain.Viewmodel.OrderServiceV
         public string Name { get; set; }
         [Display(Name = "Цена")]
         public double Price { get; set; }
+        [Display(Name = "Описание")]
+        public string Description { get; set; }
     }
 }
