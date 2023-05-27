@@ -44,6 +44,13 @@ namespace ServiceCenter.Data
                     Password = "oper",
                     Role = Role.Operator
                 });
+                builder.HasData(new User
+                {
+                    User_ID = 3,
+                    Username = "emp",
+                    Password = "emp",
+                    Role = Role.Employee
+                });
             });
 
             modelBuilder.Entity<Abonent>(builder =>

@@ -138,7 +138,31 @@ namespace ServiceCenter.Service.Implementations
 
         public IBaseResponce<User> GetById(uint id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var user = _userRepository.GetById(id).Result;
+                if (user == null)
+                {
+                    return new BaseResponse<User>()
+                    {
+                        Description = "Not found",
+                        StatusCode = StatusCode.OK
+                    };
+                }
+                return new BaseResponse<User>()
+                {
+                    Result = user,
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<User>()
+                {
+                    Description = $"[GetUser] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
         }
 
         public async Task<IBaseResponce<User>> Create(UserViewModel model)
@@ -198,6 +222,36 @@ namespace ServiceCenter.Service.Implementations
                 {
                     StatusCode = StatusCode.InternalServerError,
                     Description = $"Внутренняя ошибка: {ex.Message}"
+                };
+            }
+        }
+
+        public async Task<IBaseResponce<User>> Remove(uint id)
+        {
+            try
+            {
+                var model = _userRepository.GetById(id).Result;
+                if (model == null)
+                {
+                    return new BaseResponse<User>()
+                    {
+                        Description = "Not found",
+                        StatusCode = StatusCode.OK
+                    };
+                }
+                await _userRepository.Delete(model);
+                return new BaseResponse<User>()
+                {
+                    Result = model,
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<User>()
+                {
+                    Description = $"[GetUser] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
                 };
             }
         }

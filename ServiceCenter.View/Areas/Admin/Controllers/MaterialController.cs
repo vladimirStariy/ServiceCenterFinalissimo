@@ -56,8 +56,9 @@ namespace ServiceCenter.View.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateMaterial(MaterialViewModel model)
+        public async Task<IActionResult> UpdateMaterial(uint id, MaterialViewModel model)
         {
+            model.Material_ID = id;
             var response = await _materialService.Update(model);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {

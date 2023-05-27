@@ -56,8 +56,9 @@ namespace ServiceCenter.View.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateOrderService(OrderServiceViewModel model)
+        public async Task<IActionResult> UpdateOrderService(uint id, OrderServiceViewModel model)
         {
+            model.OrderService_ID = id;
             var response = await _serviceService.Update(model);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {

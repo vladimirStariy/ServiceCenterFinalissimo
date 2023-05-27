@@ -11,6 +11,7 @@ namespace ServiceCenter.Service.Interfaces
 
         Task<IBaseResponce<User>> Create(UserViewModel model);
         Task<IBaseResponce<User>> Update(UserViewModel model);
+        Task<IBaseResponce<User>> Remove(uint id);
 
         IBaseResponce<List<User>> Get();
         IBaseResponce<List<UserListViewModel>> GetUserView();

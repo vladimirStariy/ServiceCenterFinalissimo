@@ -66,8 +66,9 @@ namespace ServiceCenter.View.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateEmployee(EmployeeViewModel model)
+        public async Task<IActionResult> UpdateEmployee(uint id, EmployeeViewModel model)
         {
+            model.Employee_ID = id;
             var response = await _employeeService.Update(model);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
