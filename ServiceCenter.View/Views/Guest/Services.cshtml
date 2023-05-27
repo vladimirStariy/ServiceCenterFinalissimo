@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ServiceCenter.Domain.Viewmodel.OrderServiceV.OrderServiceListViewModel>
+
+<h1 class="h3 mb-2 text-gray-800">Услуги</h1>
+
+<div class="my-2"></div>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <table class="table" id="minedatatable">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <script>
+        $(document).ready(function () {
+            $("#minedatatable").DataTable({
+                language: {
+                    search: "Поиск",
+                    lengthMenu: "Показать _MENU_ записей"
+                }
+            });
+        })
+    </script>
+}

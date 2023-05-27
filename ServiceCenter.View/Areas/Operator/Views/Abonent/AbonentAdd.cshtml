@@ -1,0 +1,66 @@
+﻿@model ServiceCenter.Domain.Viewmodel.Abonent.AbonentViewModel
+
+<h4>Абонент</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @if(ViewBag.Error)
+        {
+            <p>Невозможно добавить абонента. Отсутствуют тарифы.</p>
+        }
+        else
+        {
+            <form asp-action="AbonentAdd">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Contract_number" class="control-label"></label>
+                    <input asp-for="Contract_number" class="form-control" />
+                    <span asp-validation-for="Contract_number" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Phone" class="control-label"></label>
+                    <input asp-for="Phone" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Birthday" class="control-label"></label>
+                    <input asp-for="Birthday" class="form-control" />
+                    <span asp-validation-for="Birthday" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Adress" class="control-label"></label>
+                    <input asp-for="Adress" class="form-control" />
+                    <span asp-validation-for="Adress" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Passport" class="control-label"></label>
+                    <input asp-for="Passport" class="form-control" />
+                    <span asp-validation-for="Passport" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Tariff_ID" class="control-label"></label>
+                    <select class="form-select" asp-for="Tariff_ID" asp-items="@ViewBag.Tariff"></select>
+                    <span asp-validation-for="Tariff_ID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Сохранить" class="btn btn-primary" />
+                </div>
+            </form>
+        }
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Abonent" asp-action="Abonents">Вернуться</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,32 @@
+﻿@model ServiceCenter.Domain.Viewmodel.OrderMaterialV.OrderMaterialViewModel
+
+<h4>Материал заявки</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpdateOrderMaterial">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Material_ID" class="control-label"></label>
+                    <select class="form-select" asp-for="Material_ID" asp-items="@ViewBag.Materials"></select>
+                    <span asp-validation-for="Material_ID" class="text-danger"></span>
+                </div>
+            <div class="form-group">
+                <label asp-for="Count" class="control-label"></label>
+                <input asp-for="Count" class="form-control" />
+                <span asp-validation-for="Count" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Order" asp-action="OrderForm" asp-route-id="Model.Order_ID">Вернуться</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

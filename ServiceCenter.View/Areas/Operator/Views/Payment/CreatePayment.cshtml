@@ -1,0 +1,49 @@
+﻿@model ServiceCenter.Domain.Viewmodel.Payment.PaymentViewModel
+
+<h4>Платеж</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @if(ViewBag.Error)
+        {
+            <p>Невозможно добавить платёж. Отсутствуют абоненты.</p>
+        }
+        else
+        {
+            <form asp-action="CreatePayment">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Payment_number" class="control-label"></label>
+                    <input asp-for="Payment_number" class="form-control" />
+                    <span asp-validation-for="Payment_number" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Payment_date" class="control-label"></label>
+                    <input asp-for="Payment_date" class="form-control" />
+                    <span asp-validation-for="Payment_date" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Abonent_ID" class="control-label"></label>
+                    <select class="form-select" asp-for="Abonent_ID" asp-items="@ViewBag.Abonents"></select>
+                    <span asp-validation-for="Abonent_ID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Сохранить" class="btn btn-primary" />
+                </div>
+            </form>
+        }
+    </div>
+</div>
+
+<div>
+    <a asp-action="Payments" asp-controller="Payment">Вернуться</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
