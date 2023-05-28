@@ -91,7 +91,7 @@ namespace ServiceCenter.View.Areas.Operator.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> OrderServiceAdd(OrderServiceViewModel model)
+        public IActionResult OrderServiceAdd(OrderServiceViewModel model)
         {
             var order_id = HttpContext.Session.GetInt32("_orderid").ToString();
             var Order_ID = Convert.ToUInt32(order_id);
@@ -107,7 +107,7 @@ namespace ServiceCenter.View.Areas.Operator.Controllers
             OVM.Employee_ID = order.Employee_ID;
             OVM.Order_close_date = order.Order_close_date;
             OVM.Services = order.Services;
-            var response = await _orderService.Update(OVM);
+            var response = _orderService.Update(OVM);
 
             return RedirectToAction("OrderForm", "Order", new {id = Order_ID });
         }
@@ -134,11 +134,21 @@ namespace ServiceCenter.View.Areas.Operator.Controllers
         [HttpGet]
         public IActionResult AddOrderMaterial(uint id)
         {
-            var response1 = _materialService.Get();
-            ViewBag.Materials = new SelectList(response1.Result, "Material_ID", "Name");
-            HttpContext.Session.SetInt32("_orderid", (int)id);
+            try
+            {
+                var response1 = _materialService.Get();
+                ViewBag.Materials = new SelectList(response1.Result, "Material_ID", "Name");
+                HttpContext.Session.SetInt32("_orderid", (int)id);
 
-            return View();
+                ViewBag.Error = false;
+                return View();
+            }
+            catch
+            {
+                ViewBag.Error = true;
+                return View();
+            }
+            
         }
 
         [HttpPost]

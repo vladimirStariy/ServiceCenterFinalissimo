@@ -189,8 +189,11 @@ namespace ServiceCenter.Service.Implementations
                 order.Abonent_ID = model.Abonent_ID;
                 order.Employee_ID = model.Employee_ID;
                 order.Status = model.Status;
+                order.Services = model.Services;
 
                 await _orderRepository.Update(order);
+
+                var orderTemp = _orderRepository.GetById(model.Order_ID);
 
                 return new BaseResponse<Order>()
                 {
