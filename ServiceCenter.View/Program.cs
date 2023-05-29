@@ -67,8 +67,6 @@ customCulture.NumberFormat.NumberDecimalSeparator = ".";
 CultureInfo.DefaultThreadCurrentCulture = customCulture;
 //CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
-
-
 app.MapAreaControllerRoute(
     name: "Operator",
     areaName: "Operator",
@@ -77,12 +75,12 @@ app.MapAreaControllerRoute(
 app.MapAreaControllerRoute(
     name: "Employee",
     areaName: "Employer",
-    pattern: "employee/{controller=Abonent}/{action=Abonents}/{id?}");
+    pattern: "employee/{controller=Order}/{action=Orders}/{id?}");
 
 app.MapAreaControllerRoute(
     name: "Admin",
     areaName: "Admin",
-    pattern: "admin/{controller=Tariff}/{action=Tariffs}/{id?}");
+    pattern: "admin/{controller=User}/{action=Users}/{id?}");
 
 app.MapControllerRoute(
     name: "default",

@@ -1,0 +1,136 @@
+﻿@model ServiceCenter.Domain.Viewmodel.Order.OrderFormViewModel
+
+<h4>Заявка</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <h4>Данные заявки</h4>
+        <form asp-action="OrderForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Order_date" class="control-label"></label>
+                <input asp-for="Order_date" class="form-control" />
+                <span asp-validation-for="Order_date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Order_close_date" class="control-label"></label>
+                <input asp-for="Order_close_date" class="form-control" />
+                <span asp-validation-for="Order_close_date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Abonent_ID" class="control-label"></label>
+                <select class="form-select" asp-for="Abonent_ID" asp-items="@ViewBag.Abonents"></select>
+                <span asp-validation-for="Abonent_ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee_ID" class="control-label"></label>
+                <select class="form-select" asp-for="Employee_ID" asp-items="@ViewBag.Employers"></select>
+                <span asp-validation-for="Employee_ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+      </form>
+    </div class="col">
+    <div class="col">
+        <h4>Материалы</h4>
+        <p>
+            <a class="btn btn-success" asp-controller="Order" asp-action="AddOrderMaterial" asp-route-id="@Model.id">Добавить</a>
+        </p>
+        <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Материал
+                            </th>
+                            <th>
+                                Количество
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Materials != null)
+                        {
+                            @foreach (var item in Model.Materials)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Material.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Count)
+                                    </td>
+                                    <td>
+                                        <a asp-action="UpdateOrderMaterial" asp-controller="Order" asp-route-id="@item.OrderMaterial_ID"
+                                           class="btn btn-primary btn-icon-split">
+                                            <span class="icon text-white-50">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                                                    <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
+                                                </svg>
+                                            </span>
+                                        </a>
+                                        <a asp-action="DeleteOrderMaterial" asp-controller="Order" asp-route-id="@item.OrderMaterial_ID"
+                                           class="btn btn-danger btn-icon-split">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-trash"></i>
+                                            </span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>            
+    </div>
+    <div class="col">
+        <h4>Услуги</h4>
+        <p>
+            <a class="btn btn-success" asp-controller="Order" asp-action="OrderServiceAdd" asp-route-id="@Model.id">Добавить</a>
+        </p>
+        <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Наименование
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    @if (Model.Services != null)
+                        {
+                            @foreach (var item in Model.Services)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+
+                                        <a asp-action="OrderServiceDelete" asp-controller="Order" asp-route-id="@Model."
+                                           class="btn btn-danger btn-icon-split">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-trash"></i>
+                                            </span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                </table>            
+        </div>
+    </div>
+</div>
+
+<div>
+</div>
+
+@section Scripts 
+{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

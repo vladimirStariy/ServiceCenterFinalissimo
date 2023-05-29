@@ -1,7 +1,13 @@
 ﻿@model IEnumerable<ServiceCenter.Domain.Viewmodel.Order.OrderListViewModel>
 
+<h1 class="h3 mb-2 text-gray-800">Заявки</h1>
+
+<div class="my-2"></div>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
 <p>
-    <a asp-controller="Order" asp-action="CreateOrder">Добавить</a>
+    <a class="btn btn-success" asp-controller="Order" asp-action="CreateOrder">Добавить</a>
 </p>
 
 <table class="table" id="minedatatable">
@@ -42,13 +48,13 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Abonent_name)
-                        @Html.ActionLink("Детали", "Details", new { id=item.Abonent_Id })
+                        @Html.ActionLink("Детали", "AbonentDetails", new { id=item.Abonent_Id })
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Employee_name)
                     </td>
                     <td>
-                        <a asp-action="UpdateOrder" asp-controller="Order" asp-route-id="@item.Order_ID"
+                        <a asp-action="OrderForm" asp-controller="Order" asp-route-id="@item.Order_ID"
                            class="btn btn-primary btn-icon-split">
                             <span class="icon text-white-50">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
@@ -68,6 +74,9 @@
         }
     </tbody>
 </table>
+</div>
+</div>
+
 
 @section Scripts
     {
@@ -75,8 +84,7 @@
         $(document).ready(function () {
             $("#minedatatable").DataTable({
                 language: {
-                    search: "Поиск",
-                    lengthMenu: "Показать _MENU_ записей"
+                    url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/ru.json'
                 }
             });
         })

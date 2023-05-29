@@ -1,0 +1,23 @@
+﻿@model ServiceCenter.Domain.Viewmodel.OrderServiceV.OrderServiceViewModel
+
+<h4>Сервисы</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="OrderServiceAdd">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                    <label asp-for="OrderService_ID" class="control-label"></label>
+                    <select class="form-select" asp-for="OrderService_ID" asp-items="@ViewBag.Services"></select>
+                    <span asp-validation-for="OrderService_ID" class="text-danger"></span>
+                </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

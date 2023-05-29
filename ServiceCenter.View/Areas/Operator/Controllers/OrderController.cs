@@ -33,6 +33,17 @@ namespace ServiceCenter.View.Areas.Operator.Controllers
         }
 
         [HttpGet]
+        public IActionResult Report()
+        {
+            var orderCount = _orderService.Get().Result.Count();
+            var contractCount = _abonentService.Get().Result.Count();
+            ReporyViewModel RVM = new ReporyViewModel();
+            RVM.OrderCount = orderCount;
+            RVM.ContractCount = contractCount;
+            return View(RVM);
+        }
+
+        [HttpGet]
         public IActionResult Orders()
         {
             var response = _orderService.GetOrderView();

@@ -37,8 +37,10 @@ namespace ServiceCenter.View.Controllers
                 else
                 if (User.IsInRole("Operator"))
                     return RedirectToAction("Services", "Service", new { area = "Operator" });
+                if (User.IsInRole("Employee"))
+                    return RedirectToAction("Orders", "Order", new { area = "Employer" });
                 else
-                    return RedirectToAction("Tariffs", "Guest");
+                    return RedirectToAction("Services", "Guest");
             }
             return View(model);
         }
