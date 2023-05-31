@@ -17,10 +17,16 @@
                 @Html.DisplayNameFor(model => model.Payment_number)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Payment_vist)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Payment_date)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Abonent_name)
@@ -38,10 +44,16 @@
                         @Html.DisplayFor(modelItem => item.Payment_number)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem => item.Payment_vist)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.Payment_date)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Abonent_name)

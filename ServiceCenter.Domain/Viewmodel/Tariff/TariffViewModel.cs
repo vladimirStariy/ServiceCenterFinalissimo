@@ -22,6 +22,6 @@ namespace ServiceCenter.Domain.Viewmodel.Tariff
         public string Description { get; set; }
 
         [Display(Name = "Вид тарифного плана")]
-        public uint TariffType { get; set; }
+        public uint TariffType_ID { get; set; }
     }
 }

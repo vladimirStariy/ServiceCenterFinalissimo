@@ -18,7 +18,7 @@ namespace ServiceCenter.Domain.Viewmodel.Abonent
         [Display(Name = "Телефон")]
         public string Phone { get; set; }
         [Display(Name = "Дата рождения")]
-        public DateTime Birthday { get; set; }
+        public string Birthday { get; set; }
         [Display(Name = "Адрес")]
         public string Adress { get; set; }
         [Display(Name = "Номер паспорта")]

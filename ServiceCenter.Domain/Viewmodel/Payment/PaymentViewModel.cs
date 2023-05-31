@@ -14,11 +14,15 @@ namespace ServiceCenter.Domain.Viewmodel.Payment
         public uint Payment_ID { get; set; }
         [Display(Name = "Номер платежа")]
         public string Payment_number { get; set; }
+        [Display(Name = "Дата выставления")]
+        public DateTime Payment_vist { get; set; }
         [Display(Name = "Дата платежа")]
         public DateTime Payment_date { get; set; }
         [Display(Name = "Сумма")]
         public double Price { get; set; }
-        [Display(Name = "Abonent_ID")]
+        [Display(Name = "Статус")]
+        public string Status { get; set; }
+        [Display(Name = "Абонент")]
         public uint Abonent_ID { get; set; }
     }
 }

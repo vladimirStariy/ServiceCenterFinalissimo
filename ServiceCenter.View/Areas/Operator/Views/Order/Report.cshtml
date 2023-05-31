@@ -1,6 +1,14 @@
 ﻿@model ServiceCenter.Domain.Viewmodel.Order.ReporyViewModel
 
-<div class="card shadow mb-4">
+@if(ViewBag.Error)
+{
+    <p>
+        Невозможно отобразить отчёт. Отсутствуют абоненты или заказы.
+    </p>
+}
+else
+{
+    <div class="card shadow mb-4">
      <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
      </div>
@@ -10,7 +18,7 @@
          </div>
          <hr>
      </div>
-</div>
+    </div>
 
 @section Scripts
 {
@@ -128,3 +136,5 @@
         });
     </script>
 }
+}
+

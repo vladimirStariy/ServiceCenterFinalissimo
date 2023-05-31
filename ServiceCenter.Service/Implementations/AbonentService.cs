@@ -95,7 +95,7 @@ namespace ServiceCenter.Service.Implementations
                     model.Contract_number = item.Contract_number;
                     model.Name = item.Name;
                     model.Phone = item.Phone;
-                    model.Birthday = item.Birthday;
+                    model.Birthday = item.Birthday.ToShortDateString();
                     model.Adress = item.Adress;
                     model.Passport = item.Passport;
                     var tariff = _tariffRepository.GetById(item.Tariff_ID).Result;

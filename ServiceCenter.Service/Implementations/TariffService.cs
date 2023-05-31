@@ -29,7 +29,7 @@ namespace ServiceCenter.Service.Implementations
                 tariff.Name = model.Name;
                 tariff.Price = model.Price;
                 tariff.Description = model.Description;
-                tariff.TariffType_ID = model.TariffType;
+                tariff.TariffType_ID = model.TariffType_ID;
 
                 await _tariffRepository.Create(tariff);
 
@@ -184,12 +184,11 @@ namespace ServiceCenter.Service.Implementations
             try
             {
                 var tariff = new Tariff();
-                tariff.Tariff_ID = model.TariffType;
                 tariff.Tariff_ID = model.Id;
                 tariff.Name = model.Name;
                 tariff.Price = model.Price;
                 tariff.Description = model.Description;
-                tariff.TariffType_ID = model.TariffType;
+                tariff.TariffType_ID = model.TariffType_ID;
 
                 await _tariffRepository.Update(tariff);
 

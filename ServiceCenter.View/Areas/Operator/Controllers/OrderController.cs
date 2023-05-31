@@ -35,12 +35,22 @@ namespace ServiceCenter.View.Areas.Operator.Controllers
         [HttpGet]
         public IActionResult Report()
         {
-            var orderCount = _orderService.Get().Result.Count();
-            var contractCount = _abonentService.Get().Result.Count();
-            ReporyViewModel RVM = new ReporyViewModel();
-            RVM.OrderCount = orderCount;
-            RVM.ContractCount = contractCount;
-            return View(RVM);
+            ReporyViewModel _RVM = new ReporyViewModel();
+            try
+            {
+                var orderCount = _orderService.Get().Result.Count();
+                var contractCount = _abonentService.Get().Result.Count();
+                ReporyViewModel RVM = new ReporyViewModel();
+                RVM.OrderCount = orderCount;
+                RVM.ContractCount = contractCount;
+                ViewBag.Error = false;
+                return View(RVM);
+            }
+            catch
+            {
+                ViewBag.Error = true;
+                return View(_RVM);
+            }
         }
 
         [HttpGet]
@@ -111,9 +121,9 @@ namespace ServiceCenter.View.Areas.Operator.Controllers
             order.Services.Add(service);
 
             OrderViewModel OVM = new OrderViewModel();
+            OVM.Order_ID = order.Order_ID;
             OVM.Order_date = order.Order_date;
             OVM.Status = order.Status;
-            OVM.Order_ID = order.Order_ID;
             OVM.Abonent_ID = order.Abonent_ID;
             OVM.Employee_ID = order.Employee_ID;
             OVM.Order_close_date = order.Order_close_date;

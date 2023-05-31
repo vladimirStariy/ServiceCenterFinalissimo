@@ -24,8 +24,10 @@ namespace ServiceCenter.Service.Implementations
             {
                 var payment = new Payment();
                 payment.Payment_date = model.Payment_date;
+                payment.Payment_vist = model.Payment_vist;
                 payment.Payment_number = model.Payment_number;
                 payment.Price = model.Price;
+                payment.Status = model.Status;
                 payment.Abonent_ID = model.Abonent_ID;
 
                 await _paymentRepository.Create(payment);
@@ -117,6 +119,8 @@ namespace ServiceCenter.Service.Implementations
                     model.Payment_ID = item.Payment_ID;
                     model.Payment_number = item.Payment_number;
                     model.Payment_date = item.Payment_date;
+                    model.Payment_vist = item.Payment_vist;
+                    model.Status = item.Status;
                     model.Price = item.Price;
                     model.Abonent_name = item.Abonent.Name;
                     paymentsView.Add(model);
