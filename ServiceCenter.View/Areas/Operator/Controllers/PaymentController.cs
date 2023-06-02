@@ -22,13 +22,22 @@ namespace ServiceCenter.View.Areas.Operator.Controllers
         [HttpGet]
         public IActionResult Payments()
         {
-            var response = _paymentService.GetPaymentView();
-            ViewBag.DeleteError = false;
-            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            try
             {
-                return View(response.Result);
+                var response = _paymentService.GetPaymentView();
+                ViewBag.DeleteError = false;
+                ViewBag.Error = false;
+                if (response.StatusCode == Domain.Enum.StatusCode.OK)
+                {
+                    return View(response.Result);
+                }
+                return View("Error", $"{response.Description}");
             }
-            return View("Error", $"{response.Description}");
+            catch
+            {
+                ViewBag.Error = true;
+                return View();
+            }
         }
 
         [HttpGet]

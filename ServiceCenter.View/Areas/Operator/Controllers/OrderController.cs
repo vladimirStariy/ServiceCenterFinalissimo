@@ -112,7 +112,7 @@ namespace ServiceCenter.View.Areas.Operator.Controllers
         }
 
         [HttpPost]
-        public IActionResult OrderServiceAdd(OrderServiceViewModel model)
+        public async Task<IActionResult> OrderServiceAddAsync(OrderServiceViewModel model)
         {
             var order_id = HttpContext.Session.GetInt32("_orderid").ToString();
             var Order_ID = Convert.ToUInt32(order_id);
@@ -120,15 +120,7 @@ namespace ServiceCenter.View.Areas.Operator.Controllers
             var service = _serviceService.GetById(model.OrderService_ID).Result;
             order.Services.Add(service);
 
-            OrderViewModel OVM = new OrderViewModel();
-            OVM.Order_ID = order.Order_ID;
-            OVM.Order_date = order.Order_date;
-            OVM.Status = order.Status;
-            OVM.Abonent_ID = order.Abonent_ID;
-            OVM.Employee_ID = order.Employee_ID;
-            OVM.Order_close_date = order.Order_close_date;
-            OVM.Services = order.Services;
-            var response = _orderService.Update(OVM);
+            var response = await _orderService.Update(order);
 
             return RedirectToAction("OrderForm", "Order", new {id = Order_ID });
         }
@@ -139,7 +131,7 @@ namespace ServiceCenter.View.Areas.Operator.Controllers
             OrderViewModel OVM = new OrderViewModel();
             OVM.Order_date = model.Order_date;
             OVM.Status = model.Status;
-            OVM.Order_ID = model.id;
+            OVM._Order_ID = model.id;
             OVM.Abonent_ID = model.Abonent_ID;
             OVM.Employee_ID = model.Employee_ID;
             OVM.Order_close_date = model.Order_close_date;

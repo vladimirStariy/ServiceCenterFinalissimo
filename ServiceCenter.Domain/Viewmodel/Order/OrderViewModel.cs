@@ -6,7 +6,7 @@ namespace ServiceCenter.Domain.Viewmodel.Order
     public class OrderViewModel
     {
         [Display(Name = "№")]
-        public uint Order_ID { get; set; }
+        public uint _Order_ID { get; set; }
         [Display(Name = "Статус")]
         public string Status { get; set; }
         [Display(Name = "Дата заказа")]

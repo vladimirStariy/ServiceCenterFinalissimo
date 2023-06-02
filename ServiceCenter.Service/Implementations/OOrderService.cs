@@ -183,7 +183,7 @@ namespace ServiceCenter.Service.Implementations
             try
             {
                 var order = new Order();
-                order.Order_ID = model.Order_ID;
+                order.Order_ID = model._Order_ID;
                 order.Order_date = model.Order_date;
                 order.Order_close_date = model.Order_close_date;
                 order.Abonent_ID = model.Abonent_ID;
@@ -193,11 +193,34 @@ namespace ServiceCenter.Service.Implementations
 
                 await _orderRepository.Update(order);
 
-                var orderTemp = _orderRepository.GetById(model.Order_ID);
+                var orderTemp = _orderRepository.GetById(model._Order_ID);
 
                 return new BaseResponse<Order>()
                 {
                     Result = order,
+                    Description = "Объект изменен",
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<Order>()
+                {
+                    StatusCode = StatusCode.InternalServerError,
+                    Description = $"Внутренняя ошибка: {ex.Message}"
+                };
+            }
+        }
+
+        public async Task<IBaseResponce<Order>> Update(Order entity)
+        {
+            try
+            {
+                await _orderRepository.Update(entity);
+
+                return new BaseResponse<Order>()
+                {
+                    Result = entity,
                     Description = "Объект изменен",
                     StatusCode = StatusCode.OK
                 };

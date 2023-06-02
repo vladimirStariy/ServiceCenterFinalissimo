@@ -11,6 +11,7 @@ namespace ServiceCenter.Service.Interfaces
         Task<IBaseResponce<Employee>> Update(EmployeeViewModel model);
         Task<IBaseResponce<Employee>> Remove(uint id);
 
+        IBaseResponce<Employee> GetByUserId(uint id);
         IBaseResponce<List<Employee>> Get();
         IBaseResponce<List<EmployeeListViewModel>> GetEmployeeView();
         IBaseResponce<Employee> GetById(uint id);

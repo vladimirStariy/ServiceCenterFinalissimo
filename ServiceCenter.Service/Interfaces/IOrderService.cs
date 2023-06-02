@@ -10,7 +10,7 @@ namespace ServiceCenter.Service.Interfaces
         Task<IBaseResponce<Order>> Create(OrderViewModel model);
         Task<IBaseResponce<Order>> Update(OrderViewModel model);
         Task<IBaseResponce<Order>> Remove(uint id);
-
+        Task<IBaseResponce<Order>> Update(Order entity);
         IBaseResponce<List<Order>> Get();
         IBaseResponce<List<OrderListViewModel>> GetOrderView();
         IBaseResponce<Order> GetById(uint id);

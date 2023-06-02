@@ -105,6 +105,35 @@ namespace ServiceCenter.Service.Implementations
             }
         }
 
+        public IBaseResponce<Employee> GetByUserId(uint id)
+        {
+            try
+            {
+                var employee = _employeeRepository.Get().Where(x => x.User_ID == id).FirstOrDefault();
+                if (employee == null)
+                {
+                    return new BaseResponse<Employee>()
+                    {
+                        Description = "Not found",
+                        StatusCode = StatusCode.OK
+                    };
+                }
+                return new BaseResponse<Employee>()
+                {
+                    Result = employee,
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<Employee>()
+                {
+                    Description = $"[GetEmployee] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
+
         public IBaseResponce<List<EmployeeListViewModel>> GetEmployeeView()
         {
             try
