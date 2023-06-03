@@ -53,6 +53,7 @@
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.Contract_number)
+                        @Html.ActionLink("Детали", "ContractDetails", new {id=item.Abonent_ID})
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Name)

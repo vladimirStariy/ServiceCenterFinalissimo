@@ -1,6 +1,15 @@
 ﻿@model IEnumerable<ServiceCenter.Domain.Viewmodel.Payment.PaymentListViewModel>
 
-<h1 class="h3 mb-2 text-gray-800">Платежи</h1>
+<div class="row justify-content-start">
+    <div class="col-2">
+      <h1 class="h3 mb-2 text-gray-800">Оплата</h1>
+    </div>
+    <div class="col-2">
+      <p><a class="btn btn-success" asp-controller="Payment" asp-action="CreatePayment">Добавить</a>
+    </div>
+  </div>
+
+
 
 <div class="my-2"></div>
 
@@ -16,9 +25,9 @@
 }
 else
 {
-            <p>
+            @*<p>
                 <a class="btn btn-success" asp-controller="Payment" asp-action="CreatePayment">Добавить</a>
-            </p>
+            </p>*@
             <table class="table" id="minedatatable">
                 <thead>
                     <tr>

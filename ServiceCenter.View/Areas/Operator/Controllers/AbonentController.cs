@@ -31,6 +31,13 @@ namespace ServiceCenter.View.Areas.Operator.Controllers
         }
 
         [HttpGet]
+        public IActionResult ContractDetails(uint id)
+        {
+            var abonent = _abonentService.GetById(id);
+            return View(abonent.Result);
+        }
+
+        [HttpGet]
         public IActionResult AbonentAdd()
         {
             try

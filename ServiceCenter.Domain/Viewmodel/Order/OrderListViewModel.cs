@@ -17,7 +17,7 @@ namespace ServiceCenter.Domain.Viewmodel.Order
         [Display(Name = "Дата заказа")]
         public DateTime Order_date { get; set; }
         [Display(Name = "Дата исполнения")]
-        public DateTime Order_close_date { get; set; }
+        public DateTime? Order_close_date { get; set; }
         [Display(Name = "Абонент")]
         public string Abonent_name { get; set; }
         public uint Abonent_Id { get; set; }

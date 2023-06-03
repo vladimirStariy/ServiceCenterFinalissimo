@@ -117,7 +117,9 @@ namespace ServiceCenter.Service.Implementations
                     OrderListViewModel model = new OrderListViewModel();
                     model.Order_ID = item.Order_ID;
                     model.Order_date = item.Order_date;
-                    model.Order_close_date = (DateTime)item.Order_close_date;
+                    if (item.Order_close_date != null)
+                        model.Order_close_date = (DateTime)item.Order_close_date;
+                    
                     model.Status = item.Status;
                     model.Abonent_Id = item.Abonent_ID;
                     model.Abonent_name = item.Abonent.Name;

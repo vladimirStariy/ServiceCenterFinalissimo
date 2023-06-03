@@ -1,14 +1,19 @@
 ﻿@model IEnumerable<ServiceCenter.Domain.Viewmodel.Order.OrderListViewModel>
 
-<h1 class="h3 mb-2 text-gray-800">Заявки</h1>
+<div class="row justify-content-start">
+    <div class="col-1">
+      <h1 class="h3 mb-2 text-gray-800">Заявки</h1>
+    </div>
+    <div class="col-1">
+      <p><a class="btn btn-success" asp-controller="Order" asp-action="CreateOrder">Добавить</a></p>
+    </div>
+  </div>
+
 
 <div class="my-2"></div>
 
 <div class="card shadow mb-4">
     <div class="card-body">
-<p>
-    <a class="btn btn-success" asp-controller="Order" asp-action="CreateOrder">Добавить</a>
-</p>
 
 <table class="table" id="minedatatable">
     <thead>
